@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -61,7 +63,10 @@ public class MainActivity extends AppCompatActivity {
                 .subscribe(new Consumer<String>() {
                     @Override
                     public void accept(String s) throws Exception {
-                        Toast.makeText(MainActivity.this, s, Toast.LENGTH_SHORT).show();
+                        JSONObject jsonObject = new JSONObject(s);
+                        String monhoc = jsonObject.getString("monhoc");
+                        Toast.makeText(MainActivity.this, monhoc, Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(MainActivity.this, s, Toast.LENGTH_SHORT).show();
                     }
                 });
     }
